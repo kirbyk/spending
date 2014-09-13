@@ -27,3 +27,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'devise'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
