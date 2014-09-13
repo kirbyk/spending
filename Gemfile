@@ -28,6 +28,8 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'plaid'
+gem 'omniauth-venmo'
+gem 'byebug'
 
 group :development do
   gem 'better_errors'
