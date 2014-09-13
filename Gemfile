@@ -30,8 +30,11 @@ gem 'devise'
 gem 'plaid'
 gem 'omniauth-venmo'
 gem 'byebug'
+gem 'unirest'
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'awesome_print'
+  gem 'pry'
 end
