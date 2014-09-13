@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_filter :get_plaid_access_token, only: [:mfa, :transactions, :mfa_save]
+
   def splash
   end
 
@@ -23,8 +25,8 @@ class HomeController < ApplicationController
       if @account[:access_token].present?
         @user.plaid_access_token = @account[:access_token]
         @user.save
-        flash[:success] = "We've gained access"
-        format.html { redirect_to dashboard_path }
+        flash[:success] = "Great, now check your email for identification code."
+        format.html { redirect_to mfa_new_path }
       else
         flash[:notice] = "Something went wrong with the bank login"
         format.html { redirect_to dashboard_path }
@@ -32,9 +34,35 @@ class HomeController < ApplicationController
     end
   end
 
-  def transactions
-    p_token = current_user.plaid_access_token
-    @transactions = Plaid.customer.get_transactions(p_token)[:transactions]
+  def mfa_new
   end
+
+  def mfa_save
+    @account = Plaid.customer.mfa_step(@p_token, params[:id_code])
+
+    @user = current_user
+    respond_to do |format|
+      if @account[:access_token].present?
+        @user.mfa_verified = true;
+        @user.save
+        flash[:success] = "You've successfully connected your bank!"
+        format.html { redirect_to dashboard_path }
+      else
+        flash[:notice] = "Something went wrong with the bank login"
+        format.html { redirect_to mfa_new_path }
+      end
+    end
+  end
+
+  def transactions
+    @transactions = Plaid.customer.get_transactions(@p_token)[:transactions]
+  end
+
+  private
+
+  def get_plaid_access_token
+    @p_token = current_user.plaid_access_token
+  end
+
 
 end

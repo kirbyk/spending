@@ -1,6 +1,6 @@
 <h2>Dashboard</h2>
 
-<% if current_user.plaid_access_token.present? %>
+<% if current_user.mfa_verified == true %>
 
   <%= link_to 'transactions', transactions_path %>
 
@@ -29,7 +29,7 @@
           <%= email_field_tag :email, nil, class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= submit_tag "Connect", class: 'btn btn-primary' %>
+          <%= submit_tag "Next", class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>
