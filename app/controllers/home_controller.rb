@@ -28,6 +28,13 @@ class HomeController < ApplicationController
   def transactions
     p_token = current_user.plaid_access_token
     @transactions = Plaid.customer.get_transactions(p_token)[:transactions]
+    @transactions.push(venmo_transactions).flatten!
+    @transactions.sort_by! { |t| t['date'] }.reverse!
   end
 
+  private
+
+  def venmo_transactions
+    [{'name'=>'Venmo with Rachel Pereira', 'amount'=>65, 'date'=>'2014-09-11'}, {'name'=>'Venmo with Kirby Kohlmorgen', 'amount'=>32.5, 'date'=>'2014-09-09'}]
+  end
 end
