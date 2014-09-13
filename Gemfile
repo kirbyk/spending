@@ -19,9 +19,12 @@ gem 'byebug'
 gem 'unirest'
 gem 'bootstrap-sass'
 
+gem 'delayed_job_active_record'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'awesome_print'
   gem 'pry'
+  gem 'quiet_assets'
 end
