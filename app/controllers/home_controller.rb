@@ -26,7 +26,8 @@ class HomeController < ApplicationController
   end
 
   def transactions
-    @transactions = Plaid.customer.transactions(current_user.plaid_access_token)
+    p_token = current_user.plaid_access_token
+    @transactions = Plaid.customer.get_transactions(p_token)[:transactions]
   end
 
 end
