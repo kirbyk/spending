@@ -35,6 +35,10 @@ class HomeController < ApplicationController
   private
 
   def venmo_transactions
-    [{'name'=>'Venmo with Rachel Pereira', 'amount'=>65, 'date'=>'2014-09-11'}, {'name'=>'Venmo with Kirby Kohlmorgen', 'amount'=>32.5, 'date'=>'2014-09-09'}]
+    venmo_transactions = Transaction.where(data_source: 'venmo')
+
+    venmo_transactions.each do |transaction|
+      transaction['date'] = transaction['date_completed'].to_s.split(' ')[0]
+    end
   end
 end
