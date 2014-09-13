@@ -12,6 +12,8 @@
     <div class="background-hero">
       <div class="shade"></div>
     </div>
+  <% else %>
+    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
   <% end %>
 
   <div class="container">
