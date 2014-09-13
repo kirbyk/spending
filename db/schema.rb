@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913064520) do
+ActiveRecord::Schema.define(version: 20140913074920) do
 
   create_table "categories", force: true do |t|
     t.string   "type"
@@ -31,6 +31,21 @@ ActiveRecord::Schema.define(version: 20140913064520) do
   end
 
   add_index "tags", ["user_id"], name: "index_tags_on_user_id"
+
+  create_table "transactions", force: true do |t|
+    t.integer  "user_id"
+    t.string   "data_source"
+    t.string   "note"
+    t.integer  "amount"
+    t.string   "audience"
+    t.string   "action"
+    t.string   "venmo_id"
+    t.datetime "date_completed"
+    t.string   "actor_id"
+    t.string   "target_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

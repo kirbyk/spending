@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  data_source: MyString
+  note: MyString
+  amount: 1
+  audience: MyString
+  action: MyString
+  venmo_id: MyString
+  date_completed: 2014-09-13 03:49:20
+  actor_id: MyString
+  target_id: MyString
+
+two:
+  user_id: 1
+  data_source: MyString
+  note: MyString
+  amount: 1
+  audience: MyString
+  action: MyString
+  venmo_id: MyString
+  date_completed: 2014-09-13 03:49:20
+  actor_id: MyString
+  target_id: MyString
