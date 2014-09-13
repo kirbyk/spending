@@ -1,11 +1,130 @@
 @import 'bootstrap';
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
+body {
+  background-image: url(/assets/bg.png);
+  color: #6e787f;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+/********************************* top border *********************************/
+.top {
+  height: 10px;
+  width: 20%;
+  float: left;
+}
+
+.peter-river {
+  background-color: #3498db;
+}
+
+.turquoise {
+  background-color: #1abc9c;
+}
+
+.nephritis {
+  background-color: #27ae60;
+}
+
+.alizarin {
+  background-color: #e74c3c;
+}
+
+.orange {
+  background-color: #f39c12;
+}
+
+/************************************ hero ************************************/
+
+.background-hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -100;
+  background-image: url(/assets/hero.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.background .shade {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: inherit;
+  height: inherit;
+}
+
+.hero-wrapper {
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  bottom: -150px;
+}
+
+.hero-header-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 5em;
+  color: #555;
+}
+
+.hero-subheader-text {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 1.2em;
+  color: #555;
+}
+
+/******************************* Navigation ***********************************/
+
+.nav-wrapper {
+  margin: 20px 0;
+}
+
+.nav-header-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 2em;
+  color: #555;
+  float: left;
+}
+
+.nav-links-wrapper {
+  padding: 0;
+  list-style: none;
+  float: right;
+}
+
+.nav-link {
+  line-height: 19px;
+  text-align: center;
+  padding: 12px 0 0;
+  margin: 0 15px;
+  font-size: 15px;
+  float: left;
+}
+
+.nav-link .fa{
+  font-size: 42px;
+}
+
+.nav-link a {
+  display: block;
+  text-decoration: none;
+  color: #555;
+  text-transform: uppercase;
+}
 
 /****************************** VENMO BUTTON STYLES ***************************/
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #6e787f;
-  background-color: #ffffff;
   line-height: 1.33333333;
   font-size: 18px;
   font-weight: 300;
@@ -19,6 +138,10 @@ a {
 a:hover {
   color: #266b9c;
   border-color: #266b9c;
+}
+.embed-button {
+  position: relative;
+  margin-right: 180px;
 }
 .embed-button .logo {
   -webkit-border-radius: 4px 0px 0px 4px;
@@ -50,7 +173,7 @@ a:hover {
   color: #283036;
   font-weight: 400;
   font-size: 16px;
-  padding-top: 5px;
+  padding-top: 7px;
   background: #ffffff;
 }
 .embed-button.blue .logo {
@@ -63,28 +186,9 @@ a:hover {
   color: #3f94d0;
 }
 
-.embed-button-wrapper {
-  position: relative;
-  width: 200px;
-  margin: 0 auto;
-  text-align: center;
-  bottom: -300px;
-}
+/******************************** bank-connect ********************************/
 
-.background-hero {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -100;
-  background-image: url(/assets/hero.jpg);
-  background-size: cover;
-  background-position: center;
-}
-
-.background .shade {
-  background-color: rgba(0, 0, 0, 0.2);
-  width: inherit;
-  height: inherit;
+.bank-connect {
+  width: 400px;
+  margin: 40px auto;
 }

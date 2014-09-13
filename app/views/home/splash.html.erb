@@ -1,4 +1,7 @@
-<div class="embed-button-wrapper">
+<div class="hero-wrapper">
+  <h1 class="hero-header-text">Spending</h1>
+  <h4 class="hero-subheader-text">Better Banking Data with Venmo</h4>
+  <%= render partial: 'layouts/flash' %>
   <%= link_to user_omniauth_authorize_path(:venmo), class:"embed-button blue" do %>
     <span class="logo"></span>
     <span class="label">Login with Venmo</span>

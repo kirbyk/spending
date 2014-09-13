@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20140913202349) do
     t.string   "target_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "date"
     t.string   "target_type"
+    t.string   "date"
     t.integer  "category_id"
   end
 
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20140913202349) do
     t.string   "venmo_uid"
     t.string   "venmo_access_token"
     t.string   "plaid_access_token"
+    t.boolean  "mfa_verified"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

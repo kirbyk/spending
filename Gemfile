@@ -18,6 +18,7 @@ gem 'omniauth-venmo'
 gem 'byebug'
 gem 'unirest'
 gem 'bootstrap-sass'
+gem "font-awesome-rails"
 
 gem 'delayed_job_active_record'
 
