@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
-  def index
+  def splash
   end
 
-  def bank_login
+  def dashboard
   end
 
   def bank_create
@@ -11,18 +11,23 @@ class HomeController < ApplicationController
                                       params['pass'],
                                       params['email'])
 
+    @user = current_user
     respond_to do |format|
       if @account[:code] == 200
+        @user.plaid_access_token = @account[:access_token]
+        @user.save
         flash[:notice] = "We've gained access"
-        format.html { render action: 'transactions', account: @account }
+        format.html { redirect_to dashboard_path }
       else
         flash[:notice] = "Something went wrong with the bank login"
-        format.html { render action: 'bank_login' }
+        format.html { redirect_to dashboard_path }
       end
     end
   end
 
   def transactions
+    p_token = current_user.plaid_access_token
+    @transactions = Plaid.customer.get_transactions(p_token)[:transactions]
   end
 
 end

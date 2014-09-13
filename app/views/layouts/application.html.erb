@@ -8,10 +8,23 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+  <% if !current_user %>
+    <div class="background-hero">
+      <div class="shade"></div>
+    </div>
+  <% else %>
+    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <% end %>
 
-<%= yield %>
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <div class="alert.alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>

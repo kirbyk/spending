@@ -5,4 +5,6 @@ Welcome
 
 <% if !current_user %>
   <%= link_to "Sign in with Venmo", user_omniauth_authorize_path(:venmo) %>
+<% else %>
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 <% end %>

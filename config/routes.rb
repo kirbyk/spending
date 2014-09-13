@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resources :tags
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  root to: 'home#index'
-  get '/bank_login', to: 'home#bank_login'
+  root to: 'home#splash'
+  get '/dashboard', to: 'home#dashboard'
   get '/transactions', to: 'home#transactions'
   post '/bank_create', to: 'home#bank_create'
 end

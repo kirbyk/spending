@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140913163623) do
     t.string   "provider"
     t.string   "venmo_uid"
     t.string   "venmo_access_token"
+    t.string   "plaid_access_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
