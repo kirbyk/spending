@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   has_many :transactions
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
-      user.access_token = auth.credentials.token
+    where(provider: auth.provider, venmo_uid: auth.uid).first_or_create! do |user|
+      user.venmo_access_token = auth.credentials.token
       user.password = Devise.friendly_token[0,20]
     end
   end
