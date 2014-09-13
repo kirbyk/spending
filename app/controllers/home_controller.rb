@@ -38,7 +38,20 @@ class HomeController < ApplicationController
     venmo_transactions = Transaction.where(data_source: 'venmo')
 
     venmo_transactions.each do |transaction|
+      transaction['category_id'] = category_id_from_note(transaction['note'])
       transaction['date'] = transaction['date_completed'].to_s.split(' ')[0]
+    end
+  end
+
+  def category_id_from_note(note)
+    words = note.split(' ')
+
+    words.each do |word|
+      if word[0] == '#'
+        hashtag = word[1..(word.length-1)]
+        category = Category.find_by_name(hashtag.titleize(exclude: ['and']))
+        return category.id if category
+      end
     end
   end
 end
