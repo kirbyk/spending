@@ -17,6 +17,7 @@ gem 'plaid'
 gem 'omniauth-venmo'
 gem 'byebug'
 gem 'bootstrap-sass'
+gem "font-awesome-rails"
 
 group :development do
   gem 'better_errors'
