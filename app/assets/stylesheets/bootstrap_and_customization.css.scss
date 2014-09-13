@@ -1,4 +1,43 @@
 @import 'bootstrap';
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
+.background-hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -100;
+  background-image: url(/assets/hero.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.background .shade {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: inherit;
+  height: inherit;
+}
+
+.hero-wrapper {
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  bottom: -150px;
+}
+
+.hero-header-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 6em;
+  color: #555;
+}
+
+.hero-subheader-text {
+  margin-top: -20px;
+  margin-bottom: 40px;
+  color: #555;
+}
 
 /****************************** VENMO BUTTON STYLES ***************************/
 
@@ -19,6 +58,10 @@ a {
 a:hover {
   color: #266b9c;
   border-color: #266b9c;
+}
+.embed-button {
+  position: relative;
+  margin-right: 180px;
 }
 .embed-button .logo {
   -webkit-border-radius: 4px 0px 0px 4px;
@@ -50,7 +93,7 @@ a:hover {
   color: #283036;
   font-weight: 400;
   font-size: 16px;
-  padding-top: 5px;
+  padding-top: 7px;
   background: #ffffff;
 }
 .embed-button.blue .logo {
@@ -61,30 +104,4 @@ a:hover {
 .embed-button.blue .label {
   border-color: #3f94d0;
   color: #3f94d0;
-}
-
-.embed-button-wrapper {
-  position: relative;
-  width: 200px;
-  margin: 0 auto;
-  text-align: center;
-  bottom: -300px;
-}
-
-.background-hero {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -100;
-  background-image: url(/assets/hero.jpg);
-  background-size: cover;
-  background-position: center;
-}
-
-.background .shade {
-  background-color: rgba(0, 0, 0, 0.2);
-  width: inherit;
-  height: inherit;
 }
