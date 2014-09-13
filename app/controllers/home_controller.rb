@@ -13,9 +13,11 @@ class HomeController < ApplicationController
                       <option value="usaa">USAA</option>
                       <option value="wells">Wells Fargo</option>'.html_safe
 
-    @transactions = Plaid.customer.get_transactions(@p_token)[:transactions] if @p_token
-    @transactions.push(venmo_transactions).flatten!
-    @transactions.sort_by! { |t| t['date'] }.reverse!
+    if @p_token
+      @transactions = Plaid.customer.get_transactions(@p_token)[:transactions]
+      @transactions.push(venmo_transactions).flatten!
+      @transactions.sort_by! { |t| t['date'] }.reverse!
+    end
   end
 
   def bank_create
