@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140913191205) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "date"
+    t.string   "target_type"
   end
 
   create_table "users", force: true do |t|
