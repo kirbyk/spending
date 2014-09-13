@@ -9,19 +9,20 @@
 <body>
 
   <% if !current_user %>
-    <div class="background-hero">
-      <div class="shade"></div>
-    </div>
+    <div class="background-hero"><div class="shade"></div></div>
   <% else %>
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+    <div class="top peter-river"></div>
+    <div class="top turquoise"></div>
+    <div class="top nephritis"></div>
+    <div class="top alizarin"></div>
+    <div class="top orange"></div>
   <% end %>
 
   <div class="container">
-    <% flash.each do |name, msg| %>
-      <div class="alert.alert-info">
-        <%= msg %>
-      </div>
-    <% end %>
+
+  <% if current_user %>
+    <%= render partial: 'layouts/navigation' %>
+  <% end %>
 
     <%= yield %>
   </div>
