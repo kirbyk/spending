@@ -1,24 +1,26 @@
-<h2 class="nav-header-text">Spending</h2>
-<div>
-  <ul class="nav-links-wrapper">
-    <li class="nav-link">
-      <%= link_to transactions_path do %>
-        <%= fa_icon "align-justify" %>
-        <p>Transactions</p>
-      <% end %>
-    </li>
-    <li class="nav-link">
-      <%= link_to nil do %>
-        <%= fa_icon "pie-chart" %>
-        <p>Reports</p>
-      <% end %>
-    </li>
-    <li class="nav-link">
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        <%= fa_icon "sign-out" %>
-        <p>Sign Out</p>
-      <% end %>
-    </li>
-  <ul>
+<div class="nav-wrapper">
+  <h2 class="nav-header-text">Spending</h2>
+  <div>
+    <ul class="nav-links-wrapper">
+      <li class="nav-link">
+        <%= link_to transactions_path do %>
+          <%= fa_icon "align-justify" %>
+          <p>Transactions</p>
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <%= link_to nil do %>
+          <%= fa_icon "pie-chart" %>
+          <p>Reports</p>
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <%= fa_icon "sign-out" %>
+          <p>Sign Out</p>
+        <% end %>
+      </li>
+    <ul>
+  </div>
+  <div class="clearfix"></div>
 </div>
-<div class="clearfix"></div>

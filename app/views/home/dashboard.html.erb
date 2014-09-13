@@ -11,7 +11,7 @@
 
 <% else %>
 
-  <div class="panel panel-default">
+  <div class="bank-connect panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Connect your Bank</h3>
     </div>
@@ -34,7 +34,9 @@
           <%= email_field_tag :email, nil, class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= submit_tag "Next", class: 'btn btn-primary' %>
+          <%= button_tag(type: "submit", class: "btn btn-primary right") do %>
+            Next <%= fa_icon "arrow-right" %>
+          <% end %>
         </div>
       <% end %>
     </div>

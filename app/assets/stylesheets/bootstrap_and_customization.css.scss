@@ -6,6 +6,14 @@ body {
   color: #6e787f;
 }
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
 /********************************* top border *********************************/
 .top {
   height: 10px;
@@ -75,6 +83,10 @@ body {
 }
 
 /******************************* Navigation ***********************************/
+
+.nav-wrapper {
+  margin: 20px 0;
+}
 
 .nav-header-text {
   font-family: 'Pacifico', cursive;
@@ -172,4 +184,11 @@ a:hover {
 .embed-button.blue .label {
   border-color: #3f94d0;
   color: #3f94d0;
+}
+
+/******************************** bank-connect ********************************/
+
+.bank-connect {
+  width: 400px;
+  margin: 40px auto;
 }
