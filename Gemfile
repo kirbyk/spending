@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'devise'
+gem 'omniauth-venmo'
 
 group :development do
   gem 'better_errors'
