@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'devise'
-gem 'plaid'
+gem 'plaid', github: 'scottopell/plaid-ruby'
 gem 'omniauth-venmo'
 gem 'byebug'
 gem 'unirest'
@@ -27,4 +27,6 @@ group :development do
   gem 'awesome_print'
   gem 'pry'
   gem 'quiet_assets'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end

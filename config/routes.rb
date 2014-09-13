@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'home#dashboard'
   get '/transactions', to: 'home#transactions'
   post '/bank_create', to: 'home#bank_create'
+  post '/plaidComplete', to: 'home#plaid_hook'
 end
