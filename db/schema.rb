@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913074920) do
+ActiveRecord::Schema.define(version: 20140913080109) do
 
   create_table "categories", force: true do |t|
     t.string   "type"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140913074920) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "access_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
