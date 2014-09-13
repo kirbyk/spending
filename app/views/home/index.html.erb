@@ -1,8 +1,0 @@
-Welcome
-
-<%= link_to 'Create a user', new_user_registration_path %>
-<%= link_to 'Tags', tags_path %>
-
-<% if !current_user %>
-  <%= link_to "Sign in with Venmo", user_omniauth_authorize_path(:venmo) %>
-<% end %>

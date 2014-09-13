@@ -16,6 +16,7 @@ gem 'devise'
 gem 'plaid'
 gem 'omniauth-venmo'
 gem 'byebug'
+gem 'bootstrap-sass'
 
 group :development do
   gem 'better_errors'

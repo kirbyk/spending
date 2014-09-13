@@ -1,0 +1,25 @@
+<h2>Dashboard</h2>
+
+<% if current_user.plaid_access_token.present? %>
+
+  <%= link_to 'transactions', transactions_path %>
+
+<% else %>
+
+  <%= form_tag("/bank_create", method: "post") do %>
+    <%= label_tag(:institution, "Institution") %>
+    <%= text_field_tag(:institution) %>
+
+    <%= label_tag(:user, "User") %>
+    <%= text_field_tag(:user) %>
+
+    <%= label_tag(:pass, "Pass") %>
+    <%= text_field_tag(:pass) %>
+
+    <%= label_tag(:email, "Email") %>
+    <%= text_field_tag(:email) %>
+
+    <%= submit_tag("Connect") %>
+  <% end %>
+
+<% end %>
