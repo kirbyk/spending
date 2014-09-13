@@ -9,25 +9,14 @@
 <body>
 
   <% if !current_user %>
-    <div class="background-hero">
-      <div class="shade"></div>
-    </div>
-  <% else %>
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+    <div class="background-hero"><div class="shade"></div></div>
   <% end %>
 
   <div class="container">
-    <% flash.each do |name, msg| %>
-      <% if name == 'success' %>
-        <div class="alert alert-success">
-      <% elsif name == 'notice' %>
-        <div class="alert alert-danger">
-      <% else %>
-        <div class="alert alert-info">
-      <% end %>
-        <%= msg %>
-      </div>
-    <% end %>
+
+  <% if current_user %>
+    <%= render partial: 'layouts/navigation' %>
+  <% end %>
 
     <%= yield %>
   </div>

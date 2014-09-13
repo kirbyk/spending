@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :get_plaid_access_token, only: [:mfa, :transactions, :mfa_save]
+  before_filter :get_plaid_access_token, only: [:mfa, :dashboard, :mfa_save]
 
   def splash
   end
@@ -12,6 +12,8 @@ class HomeController < ApplicationController
                       <option value="us">US Bank</option>
                       <option value="usaa">USAA</option>
                       <option value="wells">Wells Fargo</option>'.html_safe
+
+    @transactions = Plaid.customer.get_transactions(@p_token)[:transactions] if @p_token
   end
 
   def bank_create
@@ -54,15 +56,10 @@ class HomeController < ApplicationController
     end
   end
 
-  def transactions
-    @transactions = Plaid.customer.get_transactions(@p_token)[:transactions]
-  end
-
   private
 
   def get_plaid_access_token
     @p_token = current_user.plaid_access_token
   end
-
 
 end

@@ -1,8 +1,13 @@
-<h2>Dashboard</h2>
-
 <% if current_user.mfa_verified == true %>
 
-  <%= link_to 'transactions', transactions_path %>
+  <table class="table table-striped">
+    <% @transactions.each do |t| %>
+      <tr>
+        <td><%= t["name"] %></td>
+        <td><%= t["amount"] %></td>
+      </tr>
+    <% end %>
+  </table>
 
 <% else %>
 

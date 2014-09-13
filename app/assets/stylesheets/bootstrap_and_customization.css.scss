@@ -1,6 +1,13 @@
 @import 'bootstrap';
 @import url(http://fonts.googleapis.com/css?family=Pacifico);
 
+body {
+  background-image: url(/assets/bg.png);
+  color: #6e787f;
+}
+
+/************************************ hero ************************************/
+
 .background-hero {
   position: fixed;
   top: 0;
@@ -29,13 +36,22 @@
 
 .hero-header-text {
   font-family: 'Pacifico', cursive;
-  font-size: 6em;
+  font-size: 5em;
   color: #555;
 }
 
 .hero-subheader-text {
-  margin-top: -20px;
+  margin-top: 40px;
   margin-bottom: 40px;
+  font-size: 1.2em;
+  color: #555;
+}
+
+/******************************* Navigation ***********************************/
+
+.nav-header-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 2em;
   color: #555;
 }
 
@@ -43,8 +59,6 @@
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #6e787f;
-  background-color: #ffffff;
   line-height: 1.33333333;
   font-size: 18px;
   font-weight: 300;
