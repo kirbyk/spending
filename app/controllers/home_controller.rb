@@ -3,6 +3,13 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    @institutions =  '<option value="amex">American Express</option>
+                      <option value="bofa">Bank of America</option>
+                      <option value="chase">Chase</option>
+                      <option value="citi">Citi</option>
+                      <option value="us">US Bank</option>
+                      <option value="usaa">USAA</option>
+                      <option value="wells">Wells Fargo</option>'.html_safe
   end
 
   def bank_create
@@ -13,10 +20,10 @@ class HomeController < ApplicationController
 
     @user = current_user
     respond_to do |format|
-      if @account[:code] == 200
+      if @account[:access_token].present?
         @user.plaid_access_token = @account[:access_token]
         @user.save
-        flash[:notice] = "We've gained access"
+        flash[:success] = "We've gained access"
         format.html { redirect_to dashboard_path }
       else
         flash[:notice] = "Something went wrong with the bank login"
