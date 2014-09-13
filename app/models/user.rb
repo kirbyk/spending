@@ -23,20 +23,43 @@ class User < ActiveRecord::Base
 
   private
   def parse_venmo
-    transactions = get_venmo_transactions
-    ap transactions['pagination']
-    transactions['data'].each do |t|
-      Transaction.create user_id:         id,
-                         data_source:     :venmo,
-                         venmo_id:        t['id'],
-                         note:            t['note'],
-                         amount:          t['amount'] * 100,
-                         audience:        t['audience'],
-                         action:          t['action'],
-                         date_completed:  t['date_completed'],
-                         actor_id:        t['actor']['id'],
-                         target_id:       t['target']['user']['id']
-      ap t
+    transactions = nil
+    loop do
+      if transactions.present?
+        next_page = transactions['pagination']['next']
+        transactions = Unirest.get(next_page).body
+      else
+        transactions = get_venmo_transactions 200
+      end
+      transactions['data'].each do |t|
+        target_type = nil
+        target      = nil
+        if t['target']['phone'].present?
+          target_type = :phone
+          target      = t['target']['phone']
+        elsif t['target']['email'].present?
+          target_type = :email
+          target      = t['target']['email']
+        else
+          target_type = :user
+          target      = t['target']['user']['id']
+        end
+        target = t['target']['phone'] ||
+                 t['target']['email'] ||
+                 t['target']['user']['id']
+        Transaction.create user_id:         id,
+                           data_source:     :venmo,
+                           venmo_id:        t['id'],
+                           note:            t['note'],
+                           amount:          t['amount'] * 100,
+                           audience:        t['audience'],
+                           action:          t['action'],
+                           date_completed:  t['date_completed'],
+                           actor_id:        t['actor']['id'],
+                           target_type:     target_type,
+                           target_id:       target
+      end
+      break if transactions['pagination']['next'].nil?
     end
   end
 
