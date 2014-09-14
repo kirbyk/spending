@@ -16,6 +16,11 @@
           <p>Reports</p>
         <% end %>
       </li>
+      <li class="nav-link"> <%= link_to tags_path do %>
+          <%= fa_icon "tag" %>
+          <p>Tags</p>
+        <% end %>
+      </li>
       <li class="nav-link">
         <%= link_to destroy_user_session_path, method: :delete do %>
           <%= fa_icon "sign-out" %>

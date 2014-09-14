@@ -24,7 +24,11 @@
           <td></td>
         <% end %>
 
-        <td><%= t['amount'] %></td>
+        <% if t['data_source'] == 'venmo' %>
+          <td><%= number_to_currency(t['amount'].to_i / 100) %></td>
+        <% else %>
+          <td><%= number_to_currency(t['amount']) %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
