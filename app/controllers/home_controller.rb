@@ -33,21 +33,8 @@ class HomeController < ApplicationController
         @user.institution = params[:institution]
         @user.save
         flash[:success] = "Great, now check your email for identification code."
-        case params['institution']
-        when 'amex'
-          @user.verified = true;
-          @user.save
-          format.html { redirect_to dashboard_path }
-        when 'chase'
+        if params['institution'] == 'chase'
           format.html { redirect_to mfa_new_path }
-        when 'citi'
-          @user.verified = true;
-          @user.save
-          format.html { redirect_to dashboard_path }
-        when 'wells'
-          @user.verified = true;
-          @user.save
-          format.html { redirect_to dashboard_path }
         else
           @user.verified = true;
           @user.save
