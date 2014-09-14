@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/scottopell/plaid-ruby.git
-  revision: f862773591164bb6584e32febd8e1abe24c597a0
+  revision: da066b3c5bf62bbc18f06d737bd5cab25acfebb2
   specs:
     plaid (0.1.4)
       json

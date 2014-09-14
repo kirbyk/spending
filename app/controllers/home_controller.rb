@@ -14,17 +14,13 @@ class HomeController < ApplicationController
                       <option value="usaa">USAA</option>
                       <option value="wells">Wells Fargo</option>'.html_safe
 
-    if @p_token
-      @transactions = Plaid.customer.get_transactions(@p_token)[:transactions]
-      @transactions.push(venmo_transactions).flatten!
-      @transactions.sort_by! { |t| t['date'] }.reverse!
-    end
+    @transactions = Transaction.all.order 'date_completed DESC'
   end
 
   def plaid_hook
-    if params[:code] == "1"
+    if params[:code] == '1'
       populate_plaid_transactions params[:access_token]
-    elsif params[:code] == 2
+    elsif params[:code] == '2'
       update_plaid_transactions
     end
     head :ok, :content_type => 'text/html'
@@ -35,7 +31,8 @@ class HomeController < ApplicationController
                                       params['user'],
                                       params['pass'],
                                       params['email'],
-                                      { webhook: 'https://57bc991e.ngrok.com/plaidComplete' }
+                                      { webhook: 'https://57bc991e.ngrok.com/plaidComplete',
+                                        login_only: true }
 
     @user = current_user
     respond_to do |format|
@@ -100,7 +97,6 @@ class HomeController < ApplicationController
                          target_id:       t['name']
     end
   end
-  handle_asynchronously :populate_plaid_transactions
 
   def venmo_transactions
     venmo_transactions = Transaction.venmo

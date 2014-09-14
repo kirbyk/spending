@@ -4,4 +4,12 @@ class Transaction < ActiveRecord::Base
 
   scope :venmo, -> {where(data_source: :venmo)}
   scope :plaid, -> {where(data_source: :plaid)}
+
+  def venmo?
+    data_source == :venmo
+  end
+
+  def plaid?
+    data_source == :plaid
+  end
 end

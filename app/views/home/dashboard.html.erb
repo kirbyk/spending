@@ -7,24 +7,18 @@
     <th>Amount</th>
     <% @transactions.each do |t| %>
       <tr>
-        <td><%= t['date'] %></td>
+        <td><%= t.date_completed.strftime("%a %b #{t.date_completed.day.ordinalize}") %></td>
 
-        <% if t['data_source'] == 'venmo' %>
-          <td><%= t['note'] %></td>
-        <% else %>
-          <td><%= t['name'] %></td>
-        <% end %>
+        <td><%= t.note %></td>
 
         <%# hack, idk how to do better easily %>
-        <% if t['category_id'] && t['data_source'] == 'venmo' %>
-          <td><%= Category.find(t['category_id']).generalize %></td>
-        <% elsif t['category_id'] %>
-          <td><%= t['category'][0] %></td>
+        <% if t.category.present? %>
+          <td><%= t.category.generalize %></td>
         <% else %>
           <td></td>
         <% end %>
 
-        <td><%= t['amount'] %></td>
+        <td><%= number_to_currency t.amount / 100.0 %></td>
       </tr>
     <% end %>
   </table>
