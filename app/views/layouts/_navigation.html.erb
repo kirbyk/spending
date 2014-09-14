@@ -1,9 +1,11 @@
 <div class="nav-wrapper">
-  <h2 class="nav-header-text">Spending</h2>
+  <%= link_to root_path do %>
+    <h2 class="nav-header-text">Spending</h2>
+  <% end %>
   <div>
     <ul class="nav-links-wrapper">
       <li class="nav-link">
-        <%= link_to transactions_path do %>
+        <%= link_to dashboard_path do %>
           <%= fa_icon "align-justify" %>
           <p>Transactions</p>
         <% end %>
