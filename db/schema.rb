@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913202349) do
+ActiveRecord::Schema.define(version: 20140914004517) do
 
   create_table "categories", force: true do |t|
     t.string   "type"
@@ -84,7 +84,8 @@ ActiveRecord::Schema.define(version: 20140913202349) do
     t.string   "venmo_uid"
     t.string   "venmo_access_token"
     t.string   "plaid_access_token"
-    t.boolean  "mfa_verified"
+    t.boolean  "verified"
+    t.string   "institution"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

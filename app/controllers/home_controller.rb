@@ -30,9 +30,29 @@ class HomeController < ApplicationController
     respond_to do |format|
       if @account[:access_token].present?
         @user.plaid_access_token = @account[:access_token]
+        @user.institution = params[:institution]
         @user.save
         flash[:success] = "Great, now check your email for identification code."
-        format.html { redirect_to mfa_new_path }
+        case params['institution']
+        when 'amex'
+          @user.verified = true;
+          @user.save
+          format.html { redirect_to dashboard_path }
+        when 'chase'
+          format.html { redirect_to mfa_new_path }
+        when 'citi'
+          @user.verified = true;
+          @user.save
+          format.html { redirect_to dashboard_path }
+        when 'wells'
+          @user.verified = true;
+          @user.save
+          format.html { redirect_to dashboard_path }
+        else
+          @user.verified = true;
+          @user.save
+          format.html { redirect_to dashboard_path }
+        end
       else
         flash[:notice] = "Something went wrong with the bank login"
         format.html { redirect_to dashboard_path }
@@ -49,7 +69,7 @@ class HomeController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @account[:access_token].present?
-        @user.mfa_verified = true;
+        @user.verified = true;
         @user.save
         flash[:success] = "You've successfully connected your bank!"
         format.html { redirect_to dashboard_path }
