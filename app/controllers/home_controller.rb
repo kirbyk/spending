@@ -84,9 +84,6 @@ class HomeController < ApplicationController
     @p_token = current_user.plaid_access_token
   end
 
-  private
-
-
   def update_plaid_transactions
   end
 
@@ -106,7 +103,7 @@ class HomeController < ApplicationController
   handle_asynchronously :populate_plaid_transactions
 
   def venmo_transactions
-    venmo_transactions = Transaction.where(data_source: 'venmo')
+    venmo_transactions = Transaction.venmo
 
     venmo_transactions.each do |transaction|
       transaction['category_id'] = category_id_from_note(transaction['note'])
