@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'reports/index'
+
   resources :tags
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
