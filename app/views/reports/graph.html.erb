@@ -1,0 +1,10 @@
+<script>
+var category_name = "<%= @category.name %>";
+var average_data  = <%= @weekly_avgs.to_json %>;
+var category_data = <%= @total_avg.to_json %>;
+</script>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
