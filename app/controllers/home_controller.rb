@@ -28,11 +28,15 @@ class HomeController < ApplicationController
   end
 
   def bank_create
+    webhook_url = 'http://spending.me'
+    if Rails.env.development?
+      webhook_url = 'https://57bc991e.ngrok.com'
+    end
     @account = Plaid.call.add_account params['institution'],
                                       params['user'],
                                       params['pass'],
                                       params['email'],
-                                      { webhook: 'https://57bc991e.ngrok.com/plaidComplete',
+                                      { webhook: "#{webhook_url}/plaidComplete",
                                         login_only: true }
 
     @user = current_user
@@ -111,9 +115,13 @@ class HomeController < ApplicationController
   def category_id_from_note(note)
     words = note.split(' ')
 
-    words.each do |word|
-      if word[0] == '#'
+    words.each_with_index do |word, i|
+      if word[0] == '#' || i == words.length-1
         hashtag = word[1..(word.length-1)]
+        tag = Tag.find_by(name: word)
+        if tag.present?
+          return tag.category.id
+        end
         category = Category.find_by_name(hashtag.titleize(exclude: ['and']))
         return category.id if category
       end
