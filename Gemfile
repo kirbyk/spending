@@ -18,6 +18,8 @@ gem 'byebug'
 gem 'unirest'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 gem 'delayed_job_active_record'
 

@@ -18,6 +18,7 @@ class HomeController < ApplicationController
       @transactions.delete_if { |t| t['name'] == 'Venmo' } # strip Venmo entries from Plaid
       @transactions.push(venmo_transactions).flatten!
       @transactions.sort_by! { |t| t['date'] }.reverse!
+      @transaction_results = @transactions.paginate(page: params[:page], per_page: 30)
     end
   end
 

@@ -1,11 +1,13 @@
 <% if current_user.verified == true %>
 
+  <div class="text-center"><%= will_paginate @transaction_results, renderer: BootstrapPagination::Rails %></div>
+
   <table class="table table-striped">
     <th>Date</th>
     <th>Name</th>
     <th>Category</th>
     <th>Amount</th>
-    <% @transactions.each do |t| %>
+    <% @transaction_results.each do |t| %>
       <tr>
         <td><%= t['date'] %></td>
 
@@ -32,6 +34,8 @@
       </tr>
     <% end %>
   </table>
+
+  <div class="text-center"><%= will_paginate @transaction_results, renderer: BootstrapPagination::Rails %></div>
 
 <% else %>
 
