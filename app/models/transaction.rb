@@ -6,10 +6,10 @@ class Transaction < ActiveRecord::Base
   scope :plaid, -> {where(data_source: :plaid)}
 
   def venmo?
-    data_source == :venmo
+    data_source == 'venmo'
   end
 
   def plaid?
-    data_source == :plaid
+    data_source == 'plaid'
   end
 end
