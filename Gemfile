@@ -16,10 +16,16 @@ gem 'devise'
 gem 'plaid'
 gem 'omniauth-venmo'
 gem 'byebug'
+gem 'unirest'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
+
+gem 'delayed_job_active_record'
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'awesome_print'
+  gem 'pry'
+  gem 'quiet_assets'
 end
