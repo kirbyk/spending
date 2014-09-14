@@ -1,27 +1,33 @@
 <% if current_user.verified == true %>
+  <div class="dashboard-table">
+    <table class="table table-striped">
+      <th class="text-center"></th>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th class="text-right">Amount</th>
+      <% @transactions.each do |t| %>
+        <tr>
+          <td class="text-center"><%= fa_icon 'paypal' %></td>
+          <td><%= t.date_completed.strftime("%a %b #{t.date_completed.day.ordinalize}") %></td>
 
-  <table class="table table-striped">
-    <th>Date</th>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Amount</th>
-    <% @transactions.each do |t| %>
-      <tr>
-        <td><%= t.date_completed.strftime("%a %b #{t.date_completed.day.ordinalize}") %></td>
+          <td><%= t.note %></td>
 
-        <td><%= t.note %></td>
+          <% if t.category.present? %>
+            <td><%= t.category.generalize %></td>
+          <% else %>
+            <td></td>
+          <% end %>
 
-        <%# hack, idk how to do better easily %>
-        <% if t.category.present? %>
-          <td><%= t.category.generalize %></td>
-        <% else %>
-          <td></td>
-        <% end %>
-
-        <td><%= number_to_currency t.amount / 100.0 %></td>
-      </tr>
-    <% end %>
-  </table>
+          <% if t.venmo? %>
+            <td class="text-right"><%= number_to_currency(t.amount.to_i / 100.0) %></td>
+          <% else %>
+            <td class="text-right"><%= number_to_currency(t.amount) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 
 <% else %>
 

@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   before_filter :get_plaid_access_token, only: [:mfa, :dashboard, :mfa_save]
 
   def splash
+    redirect_to dashboard_path if current_user
   end
 
   def dashboard
