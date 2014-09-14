@@ -34,7 +34,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'delayed_job_active_record'
 	gem 'pg'
 	gem 'rails_12factor'
 end
