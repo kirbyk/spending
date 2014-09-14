@@ -15,6 +15,7 @@ class HomeController < ApplicationController
 
     if @p_token
       @transactions = Plaid.customer.get_transactions(@p_token)[:transactions]
+      @transactions.delete_if { |t| t['name'] == 'Venmo' } # strip Venmo entries from Plaid
       @transactions.push(venmo_transactions).flatten!
       @transactions.sort_by! { |t| t['date'] }.reverse!
     end
