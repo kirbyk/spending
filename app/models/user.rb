@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
         transactions = get_venmo_transactions 200
       end
       transactions['data'].each do |t|
+        tt = Transaction.find_by(venmo_id: t['id'])
+        if tt.present?
+          next
+        end
         target_type = nil
         target      = nil
         if t['target']['phone'].present?

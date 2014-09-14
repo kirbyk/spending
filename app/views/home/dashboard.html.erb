@@ -2,16 +2,24 @@
   <div class="dashboard-table">
     <table class="table table-striped">
       <th class="text-center"></th>
-      <th>Date</th>
+      <th style="width:150px">Date</th>
       <th>Name</th>
-      <th>Category</th>
+      <th style="width:250px">Category</th>
       <th class="text-right">Amount</th>
       <% @transactions.each do |t| %>
         <tr>
-          <td class="text-center"><%= fa_icon 'paypal' %></td>
+          <td class="text-center">
+            <% if t.venmo? %>
+              <img src="/assets/venmo_v_blue.png" width="15">
+            <% end %>
+          </td>
           <td><%= t.date_completed.strftime("%a %b #{t.date_completed.day.ordinalize}") %></td>
 
-          <td><%= t.note %></td>
+          <% if t.venmo? %>
+            <td><%= t.note %></td>
+          <% else %>
+            <td><%= t.target_id %></td>
+          <% end %>
 
           <% if t.category.present? %>
             <td><%= t.category.generalize %></td>

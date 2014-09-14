@@ -14,6 +14,7 @@ class HomeController < ApplicationController
                       <option value="us">US Bank</option>
                       <option value="usaa">USAA</option>
                       <option value="wells">Wells Fargo</option>'.html_safe
+    venmo_transactions
 
     @transactions = Transaction.all.order 'date_completed DESC'
   end
@@ -109,6 +110,7 @@ class HomeController < ApplicationController
     venmo_transactions.each do |transaction|
       transaction['category_id'] = category_id_from_note(transaction['note'])
       transaction['date'] = transaction['date_completed'].to_s.split(' ')[0]
+      transaction.save
     end
   end
 
