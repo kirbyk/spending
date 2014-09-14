@@ -15,6 +15,7 @@ class TagsController < ApplicationController
   # GET /tags/new
   def new
     @tag = Tag.new
+    @catagories = Category.all
   end
 
   # GET /tags/1/edit
@@ -25,6 +26,8 @@ class TagsController < ApplicationController
   # POST /tags.json
   def create
     @tag = Tag.new(tag_params)
+    category_id = Category.find_by(name: params[:categories][:id]).id
+    @tag.category_id = category_id
 
     respond_to do |format|
       if @tag.save
