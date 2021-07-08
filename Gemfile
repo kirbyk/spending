@@ -15,7 +15,7 @@ gem 'devise'
 gem 'plaid'
 gem 'omniauth-venmo'
 gem 'byebug'
-gem 'unirest'
+gem 'unirest', '>= 1.0.8'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'will_paginate'
