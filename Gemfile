@@ -24,7 +24,7 @@ gem 'will_paginate-bootstrap'
 gem 'delayed_job_active_record'
 
 group :development do
-  gem 'better_errors'
+  gem 'better_errors', '>= 2.8.0'
   gem 'binding_of_caller'
   gem 'awesome_print'
   gem 'pry'
